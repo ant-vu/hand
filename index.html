@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hand</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="game">
+        <div id="player1" class="player">
+            <h2>Player 1</h2>
+            <div class="hands">
+                <span id="player1-hand0">1</span>
+                <span id="player1-hand1">1</span>
+            </div>
+        </div>
+        <div id="player2" class="player">
+            <h2>Player 2</h2>
+            <div class="hands">
+                <span id="player2-hand0">1</span>
+                <span id="player2-hand1">1</span>
+            </div>
+        </div>
+        <div id="controls">
+            <button onclick="attack()">Attack</button>
+            <button onclick="split()">Split</button>
+        </div>
+        <div id="status"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
