@@ -43,6 +43,14 @@ function split() {
     updateUI();
 }
 
+function attackTwoDamage() {
+    let player2Hand0 = document.getElementById('player2-hand0');
+    let player2Hand1 = document.getElementById('player2-hand1');
+    player2Hand0.textContent = Math.max(0, parseInt(player2Hand0.textContent) + 1);
+    player2Hand1.textContent = Math.max(0, parseInt(player2Hand1.textContent) + 1);
+    document.getElementById('status').textContent = 'Player 1 attacked Player 2 with 2 damage!';
+}
+
 function checkWin() {
     if (player1[0] === 0 && player1[1] === 0) {
         document.getElementById('status').innerText = "Player 2 wins!";
