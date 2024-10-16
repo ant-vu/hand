@@ -1,6 +1,7 @@
 let player1 = [1, 1];
 let player2 = [1, 1];
 let currentPlayer = 1;
+let isVsCpu = false;
 
 function updateUI() {
     document.getElementById('player1-hand0').innerText = player1[0];
@@ -24,6 +25,9 @@ function attack() {
     }
     checkWin();
     updateUI();
+    if (isVsCpu && currentPlayer === 2) {
+        setTimeout(cpuMove, 1000);
+    }
 }
 
 function split() {
@@ -41,6 +45,9 @@ function split() {
         currentPlayer = 1;
     }
     updateUI();
+    if (isVsCpu && currentPlayer === 2) {
+        setTimeout(cpuMove, 1000);
+    }
 }
 
 function attackTwoDamage() {
@@ -49,6 +56,11 @@ function attackTwoDamage() {
     player2Hand0.textContent = Math.max(0, parseInt(player2Hand0.textContent) + 1);
     player2Hand1.textContent = Math.max(0, parseInt(player2Hand1.textContent) + 1);
     document.getElementById('status').textContent = 'Player 1 attacked Player 2 with 2 damage!';
+    currentPlayer = 2;
+    updateUI();
+    if (isVsCpu && currentPlayer === 2) {
+        setTimeout(cpuMove, 1000);
+    }
 }
 
 function checkWin() {
@@ -63,6 +75,29 @@ function checkWin() {
 
 function disableControls() {
     document.querySelectorAll('button').forEach(button => button.disabled = true);
+}
+
+function startVsCpu() {
+    isVsCpu = true;
+    resetGame();
+}
+
+function resetGame() {
+    player1 = [1, 1];
+    player2 = [1, 1];
+    currentPlayer = 1;
+    updateUI();
+    document.querySelectorAll('button').forEach(button => button.disabled = false);
+}
+
+function cpuMove() {
+    let attackHand = 0;
+    let defendHand = 0;
+    player1[defendHand] = (player1[defendHand] + player2[attackHand]) % 5;
+    if (player1[defendHand] === 0) player1[defendHand] = 0;
+    currentPlayer = 1;
+    checkWin();
+    updateUI();
 }
 
 updateUI();
