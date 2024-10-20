@@ -77,7 +77,12 @@ function disableControls() {
     document.querySelectorAll('button').forEach(button => button.disabled = true);
 }
 
+function hidePlayVsCpuButton() {
+    document.getElementById('play-vs-cpu').style.display = 'none';
+}
+
 function startVsCpu() {
+    hidePlayVsCpuButton();
     isVsCpu = true;
     resetGame();
 }
