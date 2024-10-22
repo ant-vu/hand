@@ -11,9 +11,24 @@ function updateUI() {
     document.getElementById('status').innerText = `Player ${currentPlayer}'s turn`;
 }
 
-function attack() {
-    let attackHand = prompt("Choose attacking hand (0/1):");
-    let defendHand = prompt("Choose defending hand (0/1):");
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function drop(event) {
+    event.preventDefault();
+    let attackHandId = event.dataTransfer.getData("text");
+    let defendHandId = event.target.id;
+    attack(attackHandId, defendHandId);
+}
+
+function attack(attackHandId, defendHandId) {
+    let attackHand = parseInt(attackHandId.split('-')[2]);
+    let defendHand = parseInt(defendHandId.split('-')[2]);
     if (currentPlayer === 1) {
         player2[defendHand] = (player2[defendHand] + player1[attackHand]) % 5;
         if (player2[defendHand] === 0) player2[defendHand] = 0;
@@ -58,51 +73,21 @@ function attackTwoDamage() {
     document.getElementById('status').textContent = 'Player 1 attacked Player 2 with 2 damage!';
     currentPlayer = 2;
     updateUI();
-    if (isVsCpu && currentPlayer === 2) {
-        setTimeout(cpuMove, 1000);
-    }
 }
 
 function checkWin() {
     if (player1[0] === 0 && player1[1] === 0) {
-        document.getElementById('status').innerText = "Player 2 wins!";
-        disableControls();
+        document.getElementById('status').innerText = 'Player 2 wins!';
     } else if (player2[0] === 0 && player2[1] === 0) {
-        document.getElementById('status').innerText = "Player 1 wins!";
-        disableControls();
+        document.getElementById('status').innerText = 'Player 1 wins!';
     }
 }
 
-function disableControls() {
-    document.querySelectorAll('button').forEach(button => button.disabled = true);
-}
-
-function hidePlayVsCpuButton() {
-    document.getElementById('play-vs-cpu').style.display = 'none';
-}
-
 function startVsCpu() {
-    hidePlayVsCpuButton();
     isVsCpu = true;
-    resetGame();
-}
-
-function resetGame() {
-    player1 = [1, 1];
-    player2 = [1, 1];
-    currentPlayer = 1;
-    updateUI();
-    document.querySelectorAll('button').forEach(button => button.disabled = false);
+    document.getElementById('status').innerText = 'Playing vs CPU';
 }
 
 function cpuMove() {
-    let attackHand = 0;
-    let defendHand = 0;
-    player1[defendHand] = (player1[defendHand] + player2[attackHand]) % 5;
-    if (player1[defendHand] === 0) player1[defendHand] = 0;
-    currentPlayer = 1;
-    checkWin();
-    updateUI();
+    
 }
-
-updateUI();
