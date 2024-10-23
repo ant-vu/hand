@@ -89,5 +89,21 @@ function startVsCpu() {
 }
 
 function cpuMove() {
-    
+    const moveType = Math.random() < 0.5 ? 'attack' : 'split';
+    if (moveType === 'attack') {
+        const cpuHand = Math.floor(Math.random() * 2);
+        const playerHand = Math.floor(Math.random() * 2);
+        attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
+    } else {
+        let totalFingers = player2[0] + player2[1];
+        if (totalFingers % 2 === 0 && totalFingers > 0) {
+            player2[0] = player2[1] = totalFingers / 2;
+            updateUI();
+            currentPlayer = 1;
+        } else {
+            const cpuHand = Math.floor(Math.random() * 2);
+            const playerHand = Math.floor(Math.random() * 2);
+            attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
+        }
+    }
 }
