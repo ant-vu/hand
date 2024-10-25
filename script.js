@@ -75,6 +75,18 @@ function attackTwoDamage() {
     updateUI();
 }
 
+function doubleAttack() {
+    const player1Hand0 = document.getElementById('player1-hand0');
+    const player1Hand1 = document.getElementById('player1-hand1');
+    const player2Hand0 = document.getElementById('player2-hand0');
+    const player2Hand1 = document.getElementById('player2-hand1');
+    const attackValue = parseInt(player1Hand0.textContent) + parseInt(player1Hand1.textContent);
+    player2Hand0.textContent = (parseInt(player2Hand0.textContent) + attackValue) % 5;
+    player2Hand1.textContent = (parseInt(player2Hand1.textContent) + attackValue) % 5;
+    updateUI();
+    currentPlayer = 2;
+}
+
 function checkWin() {
     if (player1[0] === 0 && player1[1] === 0) {
         document.getElementById('status').innerText = 'Player 2 wins!';
