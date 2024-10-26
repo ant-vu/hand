@@ -75,16 +75,17 @@ function attackTwoDamage() {
     updateUI();
 }
 
-function doubleAttack() {
-    const player1Hand0 = document.getElementById('player1-hand0');
-    const player1Hand1 = document.getElementById('player1-hand1');
-    const player2Hand0 = document.getElementById('player2-hand0');
-    const player2Hand1 = document.getElementById('player2-hand1');
-    const attackValue = parseInt(player1Hand0.textContent) + parseInt(player1Hand1.textContent);
-    player2Hand0.textContent = (parseInt(player2Hand0.textContent) + attackValue) % 2;
-    player2Hand1.textContent = (parseInt(player2Hand1.textContent) + attackValue) % 2;
+function doubleAttack(player) {
+    const playerHand0 = document.getElementById(`${player}-hand0`);
+    const playerHand1 = document.getElementById(`${player}-hand1`);
+    const opponent = player === 'player1' ? 'player2' : 'player1';
+    const opponentHand0 = document.getElementById(`${opponent}-hand0`);
+    const opponentHand1 = document.getElementById(`${opponent}-hand1`);
+    const attackValue = parseInt(playerHand0.textContent) + parseInt(playerHand1.textContent);
+    opponentHand0.textContent = (parseInt(opponentHand0.textContent) + attackValue) % 2;
+    opponentHand1.textContent = (parseInt(opponentHand1.textContent) + attackValue) % 2;
     updateUI();
-    currentPlayer = 2;
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
 }
 
 function checkWin() {
