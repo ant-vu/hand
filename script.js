@@ -3,6 +3,19 @@ let player2 = [1, 1];
 let currentPlayer = 1;
 let isVsCpu = false;
 
+document.getElementById('attack-btn').addEventListener('click', attack);
+document.getElementById('split-btn').addEventListener('click', split);
+document.getElementById('attack-two-damage-btn').addEventListener('click', attackTwoDamage);
+document.getElementById('double-attack-btn').addEventListener('click', () => doubleAttack(currentPlayer === 1 ? 'player1' : 'player2'));
+document.getElementById('play-vs-cpu-btn').addEventListener('click', startVsCpu);
+
+const hands = document.querySelectorAll('.hand');
+hands.forEach(hand => {
+    hand.addEventListener('dragstart', drag);
+    hand.addEventListener('drop', drop);
+    hand.addEventListener('dragover', allowDrop);
+});
+
 function updateUI() {
     document.getElementById('player1-hand0').innerText = player1[0];
     document.getElementById('player1-hand1').innerText = player1[1];
