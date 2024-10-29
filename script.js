@@ -115,21 +115,37 @@ function startVsCpu() {
 }
 
 function cpuMove() {
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+            if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 === 0) {
+                attack(`player2-hand${i}`, `player1-hand${j}`);
+                return;
+            }
+        }
+    }
+    let totalFingers = player2[0] + player2[1];
+    if (totalFingers % 2 === 0 && totalFingers > 0) {
+        player2[0] = player2[1] = totalFingers / 2;
+        updateUI();
+        currentPlayer = 1;
+        return;
+    }
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+            if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 !== 0) {
+                attack(`player2-hand${i}`, `player1-hand${j}`);
+                return;
+            }
+        }
+    }
     const moveType = Math.random() < 0.5 ? 'attack' : 'split';
     if (moveType === 'attack') {
         const cpuHand = Math.floor(Math.random() * 2);
         const playerHand = Math.floor(Math.random() * 2);
         attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
     } else {
-        let totalFingers = player2[0] + player2[1];
-        if (totalFingers % 2 === 0 && totalFingers > 0) {
-            player2[0] = player2[1] = totalFingers / 2;
-            updateUI();
-            currentPlayer = 1;
-        } else {
-            const cpuHand = Math.floor(Math.random() * 2);
-            const playerHand = Math.floor(Math.random() * 2);
-            attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
-        }
+        const cpuHand = Math.floor(Math.random() * 2);
+        const playerHand = Math.floor(Math.random() * 2);
+        attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
     }
 }
