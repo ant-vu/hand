@@ -102,9 +102,9 @@ function doubleAttack(player) {
 }
 
 function checkWin() {
-    if (player1[0] === 0 && player1[1] === 0) {
+    if (player1[0] === 5 && player1[1] === 5) {
         document.getElementById('status').innerText = 'Player 2 wins!';
-    } else if (player2[0] === 0 && player2[1] === 0) {
+    } else if (player2[0] === 5 && player2[1] === 5) {
         document.getElementById('status').innerText = 'Player 1 wins!';
     }
 }
