@@ -1,6 +1,7 @@
 let player1 = [1, 1];
 let player2 = [1, 1];
 let currentPlayer = 1;
+let cpuDifficulty = 'medium';
 let isVsCpu = false;
 
 document.getElementById('attack-btn').addEventListener('click', attack);
