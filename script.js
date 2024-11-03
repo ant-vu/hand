@@ -126,12 +126,14 @@ function cpuMove() {
             }
         }
     }
-    let totalFingers = player2[0] + player2[1];
-    if (totalFingers % 2 === 0 && totalFingers > 0) {
-        player2[0] = player2[1] = totalFingers / 2;
-        updateUI();
-        currentPlayer = 1;
-        return;
+    if (cpuDifficulty === 'hard') {
+        let totalFingers = player2[0] + player2[1];
+        if (totalFingers % 2 === 0 && totalFingers > 0) {
+            player2[0] = player2[1] = totalFingers / 2;
+            updateUI();
+            currentPlayer = 1;
+            return;
+        }
     }
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 2; j++) {
