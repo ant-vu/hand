@@ -134,12 +134,12 @@ function cpuMove() {
             currentPlayer = 1;
             return;
         }
-    }
-    for (let i = 0; i < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 !== 0) {
-                attack(`player2-hand${i}`, `player1-hand${j}`);
-                return;
+        for (let i = 0; i < 2; i++) {
+            for (let j = 0; j < 2; j++) {
+                if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 !== 0) {
+                    attack(`player2-hand${i}`, `player1-hand${j}`);
+                    return;
+                }
             }
         }
     }
