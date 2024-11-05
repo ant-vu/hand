@@ -116,7 +116,7 @@ function startVsCpu() {
 }
 
 function cpuMove() {
-    if (cpuDifficulty === 'medium') {
+    if (cpuDifficulty === 'medium' || cpuDifficulty === 'hard') {
         for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
                 if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 === 0) {
