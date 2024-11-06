@@ -77,3 +77,19 @@ button:hover {
     box-shadow: 0 4px 10px var(--shadow);
     border-color: var(--primary-dark);
 }
+
+select {
+    margin: 8px;
+    padding: 8px 16px;
+    font-size: 1.1em;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background-color: white;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:hover {
+    border-color: var(--primary-dark);
+}

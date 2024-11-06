@@ -9,6 +9,10 @@ document.getElementById('split-btn').addEventListener('click', split);
 document.getElementById('attack-two-damage-btn').addEventListener('click', attackTwoDamage);
 document.getElementById('double-attack-btn').addEventListener('click', () => doubleAttack(currentPlayer === 1 ? 'player1' : 'player2'));
 document.getElementById('play-vs-cpu-btn').addEventListener('click', startVsCpu);
+document.getElementById('cpu-difficulty').addEventListener('change', (event) => {
+    cpuDifficulty = event.target.value;
+    document.getElementById('status').innerText = `CPU difficulty set to ${cpuDifficulty}`;
+});
 
 const hands = document.querySelectorAll('.hand');
 hands.forEach(hand => {
