@@ -1,7 +1,7 @@
 let player1 = [1, 1];
 let player2 = [1, 1];
 let currentPlayer = 1;
-let cpuDifficulty = 'medium';
+let cpuDifficulty = 'easy';
 let isVsCpu = false;
 
 document.getElementById('attack-btn').addEventListener('click', attack);
@@ -138,6 +138,8 @@ function cpuMove() {
             currentPlayer = 1;
             return;
         }
+    }
+    if (cpuDifficulty === 'very hard') {
         for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
                 if (player2[i] > 0 && player1[j] > 0 && (player1[j] + player2[i]) % 5 !== 0) {
