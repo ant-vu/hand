@@ -130,7 +130,7 @@ function cpuMove() {
             }
         }
     }
-    if (cpuDifficulty === 'hard') {
+    if (cpuDifficulty === 'hard' || cpuDifficulty === 'very hard') {
         let totalFingers = player2[0] + player2[1];
         if (totalFingers % 2 === 0 && totalFingers > 0) {
             player2[0] = player2[1] = totalFingers / 2;
