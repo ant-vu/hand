@@ -155,8 +155,6 @@ function cpuMove() {
         const playerHand = Math.floor(Math.random() * 2);
         attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
     } else {
-        const cpuHand = Math.floor(Math.random() * 2);
-        const playerHand = Math.floor(Math.random() * 2);
-        attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
+        split();
     }
 }
