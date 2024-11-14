@@ -149,6 +149,16 @@ function cpuMove() {
             }
         }
     }
+    if (cpuDifficulty === 'easy') {
+        const moveType = Math.random() < 0.5 ? 'attack' : 'split';
+        if (moveType === 'attack') {
+            const cpuHand = Math.floor(Math.random() * 2);
+            const playerHand = Math.floor(Math.random() * 2);
+            attack(`player2-hand${cpuHand}`, `player1-hand${playerHand}`);
+        } else {
+            split();
+        }
+    }
     const moveType = Math.random() < 0.5 ? 'attack' : 'split';
     if (moveType === 'attack') {
         const cpuHand = Math.floor(Math.random() * 2);
