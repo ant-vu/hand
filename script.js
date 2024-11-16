@@ -150,7 +150,7 @@ function cpuMove() {
         }
     }
     if (cpuDifficulty === 'medium' || cpuDifficulty === 'easy') {
-        const moveType = Math.random() < 0.5 ? 'attack' : 'split';
+        const moveType = Math.random() < 0.25 ? 'attack' : 'split';
         if (moveType === 'attack') {
             const cpuHand = Math.floor(Math.random() * 2);
             const playerHand = Math.floor(Math.random() * 2);
