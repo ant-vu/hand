@@ -149,7 +149,7 @@ function cpuMove() {
             }
         }
     }
-    if (cpuDifficulty === 'easy') {
+    if (cpuDifficulty === 'medium' || cpuDifficulty === 'easy') {
         const moveType = Math.random() < 0.5 ? 'attack' : 'split';
         if (moveType === 'attack') {
             const cpuHand = Math.floor(Math.random() * 2);
